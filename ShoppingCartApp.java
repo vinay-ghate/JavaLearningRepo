@@ -1,4 +1,6 @@
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ import java.util.Scanner;
 public class ShoppingCartApp {
     private HashMap<String, Product> store = new HashMap<>();
     private HashMap<Product, Float> cart = new HashMap<>();
+    private ArrayList<String> prodList =new ArrayList<>();
 
     private Scanner sc = new Scanner(System.in);
 
@@ -31,8 +34,8 @@ public class ShoppingCartApp {
     }
 
     private void buyProduct(){
-        System.out.print("Enter Product Name : ");
-        String name = sc.nextLine();
+        System.out.print("Enter Product Number : ");
+        int productId = sc.nextInt();
         System.out.printf("Enter %s Quantity : ",name);
         int quantity = sc.nextInt();
         Product p1 = 
