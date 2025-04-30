@@ -1,6 +1,4 @@
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -12,8 +10,8 @@ import java.util.Scanner;
 
 public class ShoppingCartApp {
     private HashMap<String, Product> store = new HashMap<>();
-    private HashMap<Product, Float> cart = new HashMap<>();
-    private ArrayList<String> prodList =new ArrayList<>();
+    private HashMap<Product, Integer> cart = new HashMap<>();
+    // private ArrayList<String> prodList =new ArrayList<>();
 
     private Scanner sc = new Scanner(System.in);
 
@@ -34,14 +32,22 @@ public class ShoppingCartApp {
     }
 
     private void buyProduct(){
-        System.out.print("Enter Product Number : ");
-        int productId = sc.nextInt();
+        System.out.print("Enter Product Name : ");
+        String name = sc.nextLine();
         System.out.printf("Enter %s Quantity : ",name);
         int quantity = sc.nextInt();
-        Product p1 = 
+        Product p1 = store.get(name);
+        cart.put(p1,quantity);
     }
 
-
+    private void getBill(){
+        final float[] bill = {0}; // Use an array to hold the bill value
+        cart.forEach((k, v) -> { 
+            Product p1 = store.get(k);
+            bill[0] += p1.productPrice * v; // Update the bill value
+        });
+        System.out.printf("Total Bill: %.2f%n", bill[0]); // Print the total bill
+    }
 
 }
 
